@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| _Aucune_ | — | _Aucun verrou actif — Vague 2 intégrée globalement (T-005b). Prêt pour la Vague 3 en parallèle : Claude (T-006) \|\| Freebuff (T-007)._ | — | — | — |
+| `T-006` | `Claude` | Flux Reels plein écran (scroll-snap, lecture/pause/son, overlay produit + panier 1 clic, clavier, filtre catégorie) | `src/components/reels/*`, `src/app/reels/*`, `src/components/shop/ShopShell.tsx` (suppression, code mort depuis T-005b) | EN COURS | 2026-11-21 01:40 |
 
 ---
 
@@ -110,7 +110,7 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
 - **Vérifications :**
   - `git init -b main` → dépôt initialisé sur `main`.
   - État Git vérifié via `git status` après indexation.
-- **Passation / Impact pour les autres agents :** Le hub est opérationnel. Prochaine étape (`T-002`) : validation de la direction visuelle avec l'utilisateur puis scaffolding Next.js + Tailwind CSS prêt pour GitHub et Vercel. Aucun verrou actif.
+| _Aucune_ | — | _Aucun verrou Freebuff actif — `T-007` livre ; voir `T-006` (Claude) pour l etat de la Vague 3._ | — | — | — |
 
 ### [START] [T-002] [Antigravity] — 2026-11-21 00:59
 - **Objectif :** Rédiger le plan de travail par vagues (`PLAN.md`) pour optimiser l'exécution parallèle entre Antigravity, Claude et Freebuff, et référencer `PLAN.md` dans `AGENTS.md` et `CLAUDE.md`.
@@ -269,3 +269,42 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
   - **Pour `Claude` (`T-006`) et `Freebuff` (`T-007`) :** `StoreProviders`, `ToastProvider` et `CartDrawer` sont désormais montés **globalement** dans `AppProviders.tsx`. Ne pas recréer de wrapper `layout.tsx` local sur `/reels`, `/favorites` ou `/compare` : `useCart()`, `useFavorites()` et `useToast()` fonctionnent directement partout.
   - **Pour `Freebuff` (`T-007`) :** en complément de `T-007`, recaler la fiche `organiseur-pliant-find-my` dans `src/data/products.ts` et `src/data/reels.ts` sur le **porte-clés carbone pliant compatible Apple Find My** du reel `@thetrazix` (`https://www.instagram.com/p/Dd-jloQR6EA/`).
   - Aucun verrou actif.
+
+### [START] [T-006] [Claude] — 2026-11-21 01:40
+- **Objectif :** Vague 3 — flux vertical façon Reels sur `/reels` : scroll-snap plein écran, lecteur (aperçu animé pour `preview`/`instagram`, `<video>` réel prêt pour `mp4`) avec lecture/pause et son, carte produit superposée (« Voir la fiche » + « + Panier » 1 clic via `useCart` + `useToast`), actions (favori, partage, source externe), navigation clavier ↑/↓/Espace/M, swipe natif, filtre catégorie (`?cat=`) et lien profond (`?reel=`).
+- **Fichiers ciblés / verrouillés :** `src/components/reels/*`, `src/app/reels/*` ; suppression de `src/components/shop/ShopShell.tsx` (mon fichier, inutilisé depuis le montage global `T-005b`).
+- **Dépendances / Notes :** Lecture seule de `@/data`, `@/types`, `@/store`, `@/components/ui`. Aucun fichier partagé ni dépendance modifiés. Pas de layout local (providers globaux depuis `T-005b`).
+
+### [START] [T-007] [Freebuff] — 2026-11-21 01:44
+- **Objectif :** Vague 3 — pages annexes (`/compare`, `/favorites`, `/about`), SEO technique (`sitemap.ts`, `robots.ts`) et validateur de catalogue (`scripts/validate-catalog.mjs`), en consommant les hooks de `src/store/*` et les données de `@/data`. Inclut le recalibrage demandé en `T-005b` : fiche `organiseur-pliant-find-my` → porte-clés carbone pliant compatible Apple Find My (reel `@thetrazix`, `https://www.instagram.com/p/Dd-jloQR6EA/`).
+- **Fichiers ciblés / verrouillés :** `src/app/compare/*`, `src/app/favorites/*`, `src/app/about/*`, `src/app/sitemap.ts`, `src/app/robots.ts`, `scripts/*`, `src/data/products.ts`, `src/data/reels.ts`, `AGENT_COMMS.md`
+- **Dépendances / Notes :** Suite à `[DONE] [T-005b]` (commit `c81da1e`). `StoreProviders`, `ToastProvider` et `CartDrawer` sont montés globalement dans `AppProviders.tsx` : aucun `layout.tsx` local à créer. Aucune nouvelle dépendance. Aucun fichier de `Claude` (`src/store/*`, `src/components/shop/*`, `src/app/shop/*`, `src/app/product/*`, `src/app/checkout/*`, `src/app/reels/*`, `src/components/reels/*`) ni fichier partagé modifié.
+
+### [DONE] [T-007] [Freebuff] — 2026-11-21 01:58
+- **Fichiers créés / modifiés / supprimés :**
+  - `src/app/compare/page.tsx`, `src/app/compare/CompareBoard.tsx` (créés)
+  - `src/app/favorites/page.tsx`, `src/app/favorites/FavoritesList.tsx` (créés)
+  - `src/app/about/page.tsx` (créé)
+  - `src/app/sitemap.ts`, `src/app/robots.ts` (créés)
+  - `scripts/validate-catalog.mjs` (créé)
+  - `src/data/products.ts` (modifié — fiche `organiseur-pliant-find-my` remplacée par le porte-clés carbone Find My : `prod-porte-cles-carbone-findmy` / `porte-cles-carbone-find-my`)
+  - `src/data/reels.ts` (modifié — `reel-organiseur-findmy` remplacé par `reel-porte-cles-carbone-findmy`, source Instagram `@thetrazix`, `https://www.instagram.com/p/Dd-jloQR6EA/`)
+  - `AGENT_COMMS.md` (modifié — verrou, journal, libération)
+- **Résumé des changements :**
+  - `/compare` : sélection de 2 à 3 outils encodée dans l URL (`?items=slug,slug,slug`), selects groupés par rayon, remplacement/retrait/réinitialisation. Tableau côte à côte : visuel, marque, prix + fourchette revendeur, note, grade de robustesse, stock, problème résolu, twist, union des spécifications, points forts, limites, démo externe, fiche + ajout panier + favori. Slugs inconnus ou dupliqués filtrés puis complétés par la sélection MECA par défaut ; tableau scrollable horizontalement sur mobile.
+  - `/favorites` : liste live branchée sur `useFavorites()` (providers globaux, aucun wrapper local), état vide avec CTA boutique, vidage avec confirmation `Modal` + toast. Page `noindex, follow`.
+  - `/about` : manifeste, 3 principes de sélection, guide « Pro / Atelier / EDC / Gadget » (critères de reconnaissance + verdict), méthode d entrée au catalogue en 4 étapes, refus explicites, bloc prix/fourchette.
+  - SEO : `sitemap.ts` (5 pages fixes + 25 fiches, URL via `getSiteUrl()`, jamais de localhost codé en dur) et `robots.ts` (allow `/`, disallow `/checkout` et `/favorites`, sitemap + host).
+  - `validate-catalog.mjs` : importe `src/data/*.ts` via le type stripping natif de Node (aucune dépendance, aucun build) et vérifie ids/slugs uniques et kebab-case, champs requis avec seuils par champ, catégories, prix et fourchettes, note 0–5, avis entiers, grades, tags, specs (3 min, labels uniques), pros/cons, existence réelle des visuels locaux dans `public/`, URLs https, cohérence produit ↔ reel dans les deux sens, sources/posters des reels, rayons non vides.
+  - Aucune dépendance ajoutée. Aucun fichier de `Claude` (`src/store/*`, `src/components/shop/*`, `src/app/shop/*`, `src/app/product/*`, `src/app/checkout/*`, `src/app/reels/*`, `src/components/reels/*`) ni fichier partagé modifié.
+- **Vérifications :**
+  - `node scripts/validate-catalog.mjs` → OK (exit 0) : 25 produits · 5 catégories · 10 reels, 5 par rayon, 0 avertissement
+  - `npm run lint` → OK (exit 0, 0 erreur / 0 warning)
+  - `npx tsc --noEmit` → OK (exit 0)
+  - `npm run build` → OK (Turbopack, 36 pages ; `/compare`, `/favorites`, `/about`, `/robots.txt`, `/sitemap.xml` générés + 25 fiches `/product/[slug]` SSG)
+- **Passation / Impact pour les autres agents :**
+  - **`Antigravity` (`T-008`) :** ajouter `node scripts/validate-catalog.mjs` à la batterie finale. Le script exige **Node >= 22.18** (type stripping natif) et ne dépend d aucun build ; les warnings `MODULE_TYPELESS_PACKAGE_JSON` sont cosmétiques — ne pas ajouter `"type": "module"` à `package.json` sans vérifier Next/PostCSS.
+  - `/favorites` dépend du montage global de `StoreProviders` + `ToastProvider` dans `AppProviders.tsx` (fait en `T-005b`) : ne pas ajouter de provider local sur la route.
+  - **Changement d identifiants :** `prod-organiseur-findmy` / `organiseur-pliant-find-my` → `prod-porte-cles-carbone-findmy` / `porte-cles-carbone-find-my`. Un favori enregistré sur l ancien id est silencieusement ignoré par `parseStoredFavorites` (aucun crash). Plus aucune référence à l ancien slug dans le dépôt.
+  - `/compare` est 100 % client sous `Suspense` : l URL reste partageable et les slugs non fiables sont filtrés côté client.
+  - `sitemap.ts` inclut `/reels` ; si une route est retirée plus tard, retirer sa ligne de `STATIC_ROUTES`.
