@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| _Aucune_ | — | _Aucun verrou actif — Vagues 0 à 4 terminées (MECA Lab V1 prêt pour production)._ | — | — | — |
+| _Aucune_ | — | _Aucun verrou actif — Refonte Pro 1-Click Workbench (T-009) terminée et déployée._ | — | — | — |
 
 ---
 
@@ -354,3 +354,31 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
   - `npm run build` → OK (Turbopack, 36 pages générées : `/`, `/reels`, `/shop`, `/product/[slug]` ×25 SSG, `/compare`, `/favorites`, `/about`, `/checkout`, `/robots.txt`, `/sitemap.xml`)
   - Aperçu local + inspection visuelle navigateur sur `http://localhost:3000` lancés juste après le push `main`.
 - **Passation / Impact pour les autres agents :** Vagues 0 à 4 terminées et poussées sur `origin/main` (`https://github.com/Monsieurking5D/Meca.git`). Aucun verrou actif.
+
+### [START] [T-009] [Antigravity] — 2026-11-21 02:11
+- **Objectif :** Refonte UX & visuelle professionnelle « moins de clics » :
+  1. **Accueil Workbench tout-en-un (`src/app/page.tsx` + `src/components/home/WorkbenchHero.tsx`)** : lecteur Reels interactif intégré dès l'accueil (changement de démo en 1 clic sans changer de page + ajout panier direct) suivi directement du catalogue complet filtrable en temps réel (zéro clic intermédiaire vers `/shop`).
+  2. **Cartes produits pro haute densité (`ProductCard.tsx`)** : affichage direct du twist mécanique et des 2 spécifications principales sur la carte + bouton **Aperçu rapide (Quick-View)** en 1 clic + bouton **+ Comparer** en 1 clic.
+  3. **Quick-View Modal (`QuickViewModal.tsx`) & CompareDock flottant (`CompareDock.tsx` + `src/store/compare-context.tsx`)** : consulter toute la fiche technique ou comparer 2–3 outils sans quitter sa position de lecture.
+  4. **25 visuels techniques SVG dédiés (`public/images/products/<slug>.svg`)** : remplacer les 5 icônes génériques répétées par 25 schémas industriels uniques (silhouette de l'outil, cotes, badge matière).
+- **Fichiers ciblés / verrouillés :** `public/images/products/*`, `src/data/products.ts`, `src/data/reels.ts`, `src/store/*`, `src/components/providers/AppProviders.tsx`, `src/components/layout/*`, `src/components/shop/*`, `src/components/home/*`, `src/app/page.tsx`, `src/app/globals.css`, `AGENT_COMMS.md`
+- **Dépendances / Notes :** Suite à `T-008` (`c3bf0fc`). Aucun autre verrou actif.
+
+### [DONE] [T-009] [Antigravity] — 2026-11-21 02:21
+- **Fichiers créés / modifiés / supprimés :**
+  - `public/images/products/*.svg` (22 nouveaux schémas techniques CAO dédiés créés — chacun des 25 produits possède désormais son visuel sur-mesure)
+  - `src/data/products.ts`, `src/data/reels.ts` (modifiés — raccordement des 25 fiches et 10 Reels à leurs schémas SVG dédiés)
+  - `src/store/compare-context.tsx`, `src/store/quickview-context.tsx` (créés), `src/store/StoreProviders.tsx`, `src/store/index.ts` (modifiés)
+  - `src/components/shop/QuickViewModal.tsx`, `src/components/shop/CompareDock.tsx` (créés)
+  - `src/components/shop/ProductCard.tsx`, `src/components/shop/ProductActions.tsx` (modifiés — design Double-Bezel, affichage direct du Twist + 2 specs sur chaque carte, boutons 1 clic `Aperçu`, `Comparer`, `Favori`, `Ajouter`)
+  - `src/components/home/WorkbenchHero.tsx` (créé — studio Reels interactif permettant de basculer entre les 10 démos et de filtrer le catalogue en 1 clic sans quitter l'accueil)
+  - `src/app/page.tsx` (modifié — accueil tout-en-un combinant `WorkbenchHero` + `ShopCatalog` complet filtrable sur place + grille des 4 grades de robustesse)
+  - `src/components/providers/AppProviders.tsx`, `src/components/layout/Header.tsx`, `src/components/layout/MobileNav.tsx` (modifiés — montage global `QuickViewModal` + `CompareDock` + badge compteur live sur `Comparer`)
+  - `AGENT_COMMS.md` (modifié — clôture et libération du verrou `T-009`)
+- **Résumé des changements :** Refonte UX/UI professionnelle « 1-Click Workbench » réduisant drastiquement le nombre de clics (0 changement de page pour parcourir les 10 Reels, filtrer les 25 outils, lire le twist/specs, ouvrir l'aperçu technique complet ou épingler des outils dans le comparateur flottant) et remplaçant les icônes génériques par 25 schémas techniques dédiés.
+- **Vérifications :**
+  - `node scripts/validate-catalog.mjs` → OK (25 produits · 5 catégories · 10 reels, 0 avertissement)
+  - `npm run lint` → OK (exit 0)
+  - `npx tsc --noEmit` → OK (exit 0)
+  - `npm run build` → OK (Turbopack, 36 pages générées)
+- **Passation / Impact pour les autres agents :** Poussé sur `origin/main` et serveur local relancé sur `http://localhost:3001`. Aucun verrou actif.

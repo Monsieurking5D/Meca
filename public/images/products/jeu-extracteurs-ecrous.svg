@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="48%" r="52%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.16"/>
+      <stop offset="65%" stop-color="#141821" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0b0c0e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" stroke="#1b1f28" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#0b0d11"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <rect x="28" y="28" width="744" height="544" rx="18" fill="#11141b" fill-opacity="0.78" stroke="#262b36" stroke-width="1.5"/>
+  <rect x="36" y="36" width="728" height="528" rx="13" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <text x="60" y="72" fill="#8b93a5" font-family="monospace" font-size="12" letter-spacing="2.2">MECA LAB // EXTRACTEURS 3/8</text>
+  <rect x="610" y="53" width="130" height="26" rx="6" fill="#181c25" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.2"/>
+  <text x="675" y="70" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="1.5">SPIRALE Cr-Mo</text>
+  <line x1="60" y1="92" x2="740" y2="92" stroke="#232833" stroke-width="1"/>
+  
+      <g transform="translate(145,205)">
+        <rect x="0" y="40" width="82" height="135" rx="10" fill="#1d222c" stroke="#9ca3af" stroke-width="2"/>
+        <rect x="108" y="28" width="90" height="147" rx="10" fill="#1d222c" stroke="#9ca3af" stroke-width="2"/>
+        <rect x="224" y="14" width="100" height="161" rx="10" fill="#232936" stroke="#f59e0b" stroke-width="2.5"/>
+        <rect x="350" y="0" width="112" height="175" rx="10" fill="#1d222c" stroke="#9ca3af" stroke-width="2"/>
+        <circle cx="274" cy="95" r="32" fill="#11141b" stroke="#f59e0b" stroke-width="2"/>
+        <path d="M254 82 C268 72 288 82 292 98 C282 114 260 112 254 96" stroke="#f59e0b" stroke-width="2" fill="none"/>
+        <text x="41" y="204" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="12">10mm</text>
+        <text x="153" y="204" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="12">13mm</text>
+        <text x="274" y="204" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="12">17mm</text>
+        <text x="406" y="204" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="12">19mm</text>
+      </g>
+    
+  <line x1="60" y1="504" x2="740" y2="504" stroke="#232833" stroke-width="1"/>
+  <text x="60" y="534" fill="#d1d5db" font-family="monospace" font-size="12" letter-spacing="1.2">5 DOUILLES 9 A 19 MM</text>
+  <text x="740" y="534" text-anchor="end" fill="#f59e0b" font-family="monospace" font-size="12" letter-spacing="1.2">MORSURE HELICOIDALE INVERSEE</text>
+</svg>

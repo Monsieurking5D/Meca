@@ -7,28 +7,33 @@ import {
   Bookmark,
   Menu,
   PlaySquare,
+  Scale,
   ShoppingBag,
   X,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { useCart, useFavoritesCount } from "@/store";
+import { useCart, useCompare, useFavoritesCount } from "@/store";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { totals, openDrawer } = useCart();
   const favoritesCount = useFavoritesCount();
+  const { count: compareCount, compareSlugs } = useCompare();
   const cartCount = totals.itemCount;
 
+  const compareHref =
+    compareCount > 0 ? `/compare?items=${compareSlugs.join(",")}` : "/compare";
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="group flex items-center gap-2.5 text-text transition-opacity hover:opacity-90"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-border-strong bg-surface-elevated">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-border-strong bg-surface-elevated shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
             <svg
               viewBox="0 0 24 24"
               className="h-5 w-5 text-accent"
@@ -56,33 +61,43 @@ export function Header() {
             <span className="text-base font-semibold tracking-tight">
               MECA
             </span>
-            <span className="rounded border border-accent/35 bg-accent-muted px-1.5 py-0.5 font-mono text-[11px] font-medium uppercase tracking-wider text-accent">
-              Lab
+            <span className="rounded border border-accent/40 bg-accent-muted px-1.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-accent">
+              LAB
             </span>
           </span>
         </Link>
 
+        {/* Pill Navigation Container */}
         <nav
           aria-label="Navigation principale"
-          className="hidden items-center gap-1 md:flex"
+          className="hidden items-center gap-1 rounded-xl border border-border bg-surface/90 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] md:flex"
         >
           {SITE_CONFIG.navItems.map((item) => {
             const isActive =
               item.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(item.href);
+            const resolvedHref =
+              item.href === "/compare" ? compareHref : item.href;
+            const isCompareItem = item.href === "/compare";
+
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={resolvedHref}
                 className={cn(
-                  "rounded-lg px-3 py-1.5 text-sm font-medium transition-colors",
+                  "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
                   isActive
-                    ? "bg-surface-elevated text-text"
-                    : "text-text-secondary hover:bg-surface hover:text-text"
+                    ? "bg-surface-elevated text-text shadow-sm"
+                    : "text-text-secondary hover:bg-bg/60 hover:text-text"
                 )}
               >
-                {item.label}
+                <span>{item.label}</span>
+                {isCompareItem && compareCount > 0 ? (
+                  <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 font-mono text-[10px] font-bold tabular-nums text-bg">
+                    {compareCount}
+                  </span>
+                ) : null}
               </Link>
             );
           })}
@@ -91,15 +106,30 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             href="/reels"
-            className="hidden items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-text-secondary transition-colors hover:border-border-strong hover:text-text sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-lg border border-border bg-surface px-2.5 py-1.5 font-mono text-[11px] font-medium text-text-secondary transition-colors hover:border-accent/40 hover:text-text lg:inline-flex"
           >
             <PlaySquare className="h-3.5 w-3.5 text-accent" strokeWidth={1.75} />
-            <span>Démos</span>
+            <span>FLUX 9:16</span>
+          </Link>
+
+          <Link
+            href={compareHref}
+            aria-label={`Comparateur (${compareCount})`}
+            title="Comparateur d'outils"
+            className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-colors hover:border-border-strong hover:text-text md:hidden"
+          >
+            <Scale className="h-4 w-4" strokeWidth={1.75} />
+            {compareCount > 0 ? (
+              <span className="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 font-mono text-[10px] font-bold tabular-nums text-bg">
+                {compareCount}
+              </span>
+            ) : null}
           </Link>
 
           <Link
             href="/favorites"
             aria-label={`Outils favoris (${favoritesCount})`}
+            title="Outils favoris"
             className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-colors hover:border-border-strong hover:text-text"
           >
             <Bookmark className="h-4 w-4" strokeWidth={1.75} />
@@ -150,19 +180,26 @@ export function Header() {
                 item.href === "/"
                   ? pathname === "/"
                   : pathname.startsWith(item.href);
+              const resolvedHref =
+                item.href === "/compare" ? compareHref : item.href;
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={resolvedHref}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                    "flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                     isActive
                       ? "bg-surface-elevated text-accent"
                       : "text-text-secondary hover:bg-surface-elevated hover:text-text"
                   )}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {item.href === "/compare" && compareCount > 0 ? (
+                    <span className="rounded-full bg-accent px-1.5 py-0.5 font-mono text-[10px] font-bold text-bg">
+                      {compareCount}
+                    </span>
+                  ) : null}
                 </Link>
               );
             })}

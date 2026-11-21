@@ -1,10 +1,5 @@
 import type { Product } from "@/types";
 
-const MECANIQUE_IMG = "/images/products/cat-mecanique.svg";
-const ELECTRICITE_IMG = "/images/products/cat-electricite.svg";
-const MENUISERIE_IMG = "/images/products/cat-menuiserie.svg";
-const MESURE_IMG = "/images/products/cat-mesure.svg";
-const BUREAU_IMG = "/images/products/cat-bureau-tech.svg";
 
 export const PRODUCTS: Product[] = [
   // ---------------------------------------------------------------------------
@@ -96,8 +91,8 @@ export const PRODUCTS: Product[] = [
       "Aucune fonction coupe-fil",
     ],
     media: {
-      thumbnailUrl: MECANIQUE_IMG,
-      galleryUrls: [MECANIQUE_IMG],
+      thumbnailUrl: "/images/products/knipex-cobra-xs.svg",
+      galleryUrls: ["/images/products/knipex-cobra-xs.svg"],
       externalDemoUrl: "https://www.knipex.com",
       officialUrl: "https://www.knipex.com",
     },
@@ -143,8 +138,8 @@ export const PRODUCTS: Product[] = [
       "Pas de douilles fournies",
     ],
     media: {
-      thumbnailUrl: MECANIQUE_IMG,
-      galleryUrls: [MECANIQUE_IMG],
+      thumbnailUrl: "/images/products/wera-zyklop-mini-cliquet.svg",
+      galleryUrls: ["/images/products/wera-zyklop-mini-cliquet.svg"],
       externalDemoUrl: "https://www.wera.de",
       officialUrl: "https://www.wera.de",
     },
@@ -190,8 +185,8 @@ export const PRODUCTS: Product[] = [
       "Pas d'enregistrement vidéo natif sur tous les modèles",
     ],
     media: {
-      thumbnailUrl: MECANIQUE_IMG,
-      galleryUrls: [MECANIQUE_IMG],
+      thumbnailUrl: "/images/products/endoscope-articule-depstech.svg",
+      galleryUrls: ["/images/products/endoscope-articule-depstech.svg"],
       externalDemoUrl: "https://www.depstech.com",
       officialUrl: "https://www.depstech.com",
     },
@@ -237,8 +232,8 @@ export const PRODUCTS: Product[] = [
       "Encombrement au-dessus de la tête",
     ],
     media: {
-      thumbnailUrl: MECANIQUE_IMG,
-      galleryUrls: [MECANIQUE_IMG],
+      thumbnailUrl: "/images/products/jeu-extracteurs-ecrous.svg",
+      galleryUrls: ["/images/products/jeu-extracteurs-ecrous.svg"],
       externalDemoUrl: "https://www.amazon.fr/s?k=douille+extracteur+ecrou",
     },
     merchantUrl: "https://www.amazon.fr/s?k=douille+extracteur+ecrou",
@@ -286,8 +281,8 @@ export const PRODUCTS: Product[] = [
       "Ne remplace pas une aiguille rigide sur les longs tirages",
     ],
     media: {
-      thumbnailUrl: ELECTRICITE_IMG,
-      galleryUrls: [ELECTRICITE_IMG],
+      thumbnailUrl: "/images/products/aiguille-magnetique-klein.svg",
+      galleryUrls: ["/images/products/aiguille-magnetique-klein.svg"],
       externalDemoUrl: "https://www.kleintools.com",
       officialUrl: "https://www.kleintools.com",
     },
@@ -332,8 +327,8 @@ export const PRODUCTS: Product[] = [
       "Pas adapté aux conducteurs souples non étamés",
     ],
     media: {
-      thumbnailUrl: ELECTRICITE_IMG,
-      galleryUrls: [ELECTRICITE_IMG],
+      thumbnailUrl: "/images/products/wago-221-connecteurs-levier.svg",
+      galleryUrls: ["/images/products/wago-221-connecteurs-levier.svg"],
       externalDemoUrl: "https://www.wago.com",
       officialUrl: "https://www.wago.com",
     },
@@ -379,8 +374,8 @@ export const PRODUCTS: Product[] = [
       "Encombrement en gaine étroite",
     ],
     media: {
-      thumbnailUrl: ELECTRICITE_IMG,
-      galleryUrls: [ELECTRICITE_IMG],
+      thumbnailUrl: "/images/products/knipex-denudeuse-automatique.svg",
+      galleryUrls: ["/images/products/knipex-denudeuse-automatique.svg"],
       externalDemoUrl: "https://www.knipex.com",
       officialUrl: "https://www.knipex.com",
     },
@@ -425,8 +420,8 @@ export const PRODUCTS: Product[] = [
       "Faux positifs possibles sur câbles blindés",
     ],
     media: {
-      thumbnailUrl: ELECTRICITE_IMG,
-      galleryUrls: [ELECTRICITE_IMG],
+      thumbnailUrl: "/images/products/fluke-1ac-ii-detecteur.svg",
+      galleryUrls: ["/images/products/fluke-1ac-ii-detecteur.svg"],
       externalDemoUrl: "https://www.fluke.com",
       officialUrl: "https://www.fluke.com",
     },
@@ -471,8 +466,8 @@ export const PRODUCTS: Product[] = [
       "Précision moyenne sur les très basses tensions",
     ],
     media: {
-      thumbnailUrl: ELECTRICITE_IMG,
-      galleryUrls: [ELECTRICITE_IMG],
+      thumbnailUrl: "/images/products/pince-amperemetrique-uni-t.svg",
+      galleryUrls: ["/images/products/pince-amperemetrique-uni-t.svg"],
       externalDemoUrl: "https://www.uni-trend.com",
       officialUrl: "https://www.uni-trend.com",
     },
@@ -567,8 +562,8 @@ export const PRODUCTS: Product[] = [
       "Encombrant sur une petite table",
     ],
     media: {
-      thumbnailUrl: MENUISERIE_IMG,
-      galleryUrls: [MENUISERIE_IMG],
+      thumbnailUrl: "/images/products/microjig-grr-ripper.svg",
+      galleryUrls: ["/images/products/microjig-grr-ripper.svg"],
       externalDemoUrl: "https://www.microjig.com",
       officialUrl: "https://www.microjig.com",
     },
@@ -614,8 +609,8 @@ export const PRODUCTS: Product[] = [
       "Autonomie limitée sur les longues séries",
     ],
     media: {
-      thumbnailUrl: MENUISERIE_IMG,
-      galleryUrls: [MENUISERIE_IMG],
+      thumbnailUrl: "/images/products/hoto-tournevis-usb-c.svg",
+      galleryUrls: ["/images/products/hoto-tournevis-usb-c.svg"],
       externalDemoUrl: "https://www.hoto.com",
       officialUrl: "https://www.hoto.com",
     },
@@ -660,8 +655,8 @@ export const PRODUCTS: Product[] = [
       "Report imprécis sur les très petits rayons",
     ],
     media: {
-      thumbnailUrl: MENUISERIE_IMG,
-      galleryUrls: [MENUISERIE_IMG],
+      thumbnailUrl: "/images/products/jauge-contour-dents.svg",
+      galleryUrls: ["/images/products/jauge-contour-dents.svg"],
       externalDemoUrl: "https://www.amazon.fr/s?k=jauge+de+contour",
     },
     merchantUrl: "https://www.amazon.fr/s?k=jauge+de+contour",
@@ -705,8 +700,8 @@ export const PRODUCTS: Product[] = [
       "Rail qui fléchit à pleine ouverture",
     ],
     media: {
-      thumbnailUrl: MENUISERIE_IMG,
-      galleryUrls: [MENUISERIE_IMG],
+      thumbnailUrl: "/images/products/serre-joint-quick-grip.svg",
+      galleryUrls: ["/images/products/serre-joint-quick-grip.svg"],
       externalDemoUrl: "https://www.irwin.com",
       officialUrl: "https://www.irwin.com",
     },
@@ -755,8 +750,8 @@ export const PRODUCTS: Product[] = [
       "Illisible en plein soleil sur certains écrans",
     ],
     media: {
-      thumbnailUrl: MESURE_IMG,
-      galleryUrls: [MESURE_IMG],
+      thumbnailUrl: "/images/products/bosch-glm-50-27.svg",
+      galleryUrls: ["/images/products/bosch-glm-50-27.svg"],
       externalDemoUrl: "https://www.bosch-professional.com",
       officialUrl: "https://www.bosch-professional.com",
     },
@@ -802,8 +797,8 @@ export const PRODUCTS: Product[] = [
       "Boutons petits avec des gants",
     ],
     media: {
-      thumbnailUrl: MESURE_IMG,
-      galleryUrls: [MESURE_IMG],
+      thumbnailUrl: "/images/products/telmetre-laser-poche-duka.svg",
+      galleryUrls: ["/images/products/telmetre-laser-poche-duka.svg"],
       externalDemoUrl: "https://www.amazon.fr/s?k=telemetre+laser+poche",
     },
     merchantUrl: "https://www.amazon.fr/s?k=telemetre+laser+poche",
@@ -847,8 +842,8 @@ export const PRODUCTS: Product[] = [
       "Pile bouton à surveiller",
     ],
     media: {
-      thumbnailUrl: MESURE_IMG,
-      galleryUrls: [MESURE_IMG],
+      thumbnailUrl: "/images/products/klein-inclinemettre-935dag.svg",
+      galleryUrls: ["/images/products/klein-inclinemettre-935dag.svg"],
       externalDemoUrl: "https://www.kleintools.com",
       officialUrl: "https://www.kleintools.com",
     },
@@ -893,8 +888,8 @@ export const PRODUCTS: Product[] = [
       "Électronique sensible à l'humidité",
     ],
     media: {
-      thumbnailUrl: MESURE_IMG,
-      galleryUrls: [MESURE_IMG],
+      thumbnailUrl: "/images/products/metre-ruban-numerique.svg",
+      galleryUrls: ["/images/products/metre-ruban-numerique.svg"],
       externalDemoUrl: "https://www.amazon.fr/s?k=metre+ruban+numerique",
     },
     merchantUrl: "https://www.amazon.fr/s?k=metre+ruban+numerique",
@@ -939,8 +934,8 @@ export const PRODUCTS: Product[] = [
       "Requiert un support pour les grandes hauteurs",
     ],
     media: {
-      thumbnailUrl: MESURE_IMG,
-      galleryUrls: [MESURE_IMG],
+      thumbnailUrl: "/images/products/niveau-laser-huepar-9211g.svg",
+      galleryUrls: ["/images/products/niveau-laser-huepar-9211g.svg"],
       externalDemoUrl: "https://www.huepar.com",
       officialUrl: "https://www.huepar.com",
     },
@@ -1041,8 +1036,8 @@ export const PRODUCTS: Product[] = [
       "Six clés maximum : peu adapté à un trousseau de service",
     ],
     media: {
-      thumbnailUrl: "/images/products/cat-bureau-tech.svg",
-      galleryUrls: ["/images/products/cat-bureau-tech.svg"],
+      thumbnailUrl: "/images/products/porte-cles-carbone-find-my.svg",
+      galleryUrls: ["/images/products/porte-cles-carbone-find-my.svg"],
       externalDemoUrl: "https://www.instagram.com/p/Dd-jloQR6EA/",
     },
     reelId: "reel-porte-cles-carbone-findmy",
@@ -1087,8 +1082,8 @@ export const PRODUCTS: Product[] = [
       "Pas de molette sur ce modèle",
     ],
     media: {
-      thumbnailUrl: BUREAU_IMG,
-      galleryUrls: [BUREAU_IMG],
+      thumbnailUrl: "/images/products/pave-macro-programmable.svg",
+      galleryUrls: ["/images/products/pave-macro-programmable.svg"],
       externalDemoUrl: "https://www.amazon.fr/s?k=pave+macro+programmable",
     },
     merchantUrl: "https://www.amazon.fr/s?k=pave+macro+programmable",
@@ -1133,8 +1128,8 @@ export const PRODUCTS: Product[] = [
       "Qualité dépendante de l'acoustique de la salle",
     ],
     media: {
-      thumbnailUrl: BUREAU_IMG,
-      galleryUrls: [BUREAU_IMG],
+      thumbnailUrl: "/images/products/plaud-note-enregistreur.svg",
+      galleryUrls: ["/images/products/plaud-note-enregistreur.svg"],
       externalDemoUrl: "https://www.plaud.ai",
       officialUrl: "https://www.plaud.ai",
     },
@@ -1180,8 +1175,8 @@ export const PRODUCTS: Product[] = [
       "Le double 4K dépend de la norme USB-C du portable",
     ],
     media: {
-      thumbnailUrl: BUREAU_IMG,
-      galleryUrls: [BUREAU_IMG],
+      thumbnailUrl: "/images/products/station-usb-c-anker.svg",
+      galleryUrls: ["/images/products/station-usb-c-anker.svg"],
       externalDemoUrl: "https://www.anker.com",
       officialUrl: "https://www.anker.com",
     },

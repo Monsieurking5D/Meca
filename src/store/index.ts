@@ -5,11 +5,23 @@ export {
   type CartContextValue,
 } from "./cart-context";
 export {
+  CompareProvider,
+  MAX_COMPARE_ITEMS,
+  useCompare,
+  useCompareCount,
+  type CompareContextValue,
+} from "./compare-context";
+export {
   FavoritesProvider,
   useFavorites,
   useFavoritesCount,
   type FavoritesContextValue,
 } from "./favorites-context";
+export {
+  QuickViewProvider,
+  useQuickView,
+  type QuickViewContextValue,
+} from "./quickview-context";
 export { StoreProviders } from "./StoreProviders";
 export {
   computeCartTotals,

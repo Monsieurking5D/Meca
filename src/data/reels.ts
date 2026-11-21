@@ -64,7 +64,7 @@ export const REELS: ReelItem[] = [
     productSlug: "knipex-cobra-xs",
     durationSeconds: 19,
     sourceType: "preview",
-    posterUrl: "/images/products/cat-mecanique.svg",
+    posterUrl: "/images/products/knipex-cobra-xs.svg",
     externalUrl: "https://www.knipex.com",
     likesCount: 12400,
     highlights: [
@@ -82,7 +82,7 @@ export const REELS: ReelItem[] = [
     productSlug: "endoscope-articule-depstech",
     durationSeconds: 31,
     sourceType: "preview",
-    posterUrl: "/images/products/cat-mecanique.svg",
+    posterUrl: "/images/products/endoscope-articule-depstech.svg",
     externalUrl: "https://www.depstech.com",
     likesCount: 8700,
     highlights: [
@@ -100,7 +100,7 @@ export const REELS: ReelItem[] = [
     productSlug: "wago-221-connecteurs-levier",
     durationSeconds: 14,
     sourceType: "preview",
-    posterUrl: "/images/products/cat-electricite.svg",
+    posterUrl: "/images/products/wago-221-connecteurs-levier.svg",
     externalUrl: "https://www.wago.com",
     likesCount: 21300,
     highlights: [
@@ -118,7 +118,7 @@ export const REELS: ReelItem[] = [
     productSlug: "microjig-grr-ripper",
     durationSeconds: 27,
     sourceType: "preview",
-    posterUrl: "/images/products/cat-menuiserie.svg",
+    posterUrl: "/images/products/microjig-grr-ripper.svg",
     externalUrl: "https://www.microjig.com",
     likesCount: 15200,
     highlights: [
@@ -136,7 +136,7 @@ export const REELS: ReelItem[] = [
     productSlug: "bosch-glm-50-27",
     durationSeconds: 21,
     sourceType: "preview",
-    posterUrl: "/images/products/cat-mesure.svg",
+    posterUrl: "/images/products/bosch-glm-50-27.svg",
     externalUrl: "https://www.bosch-professional.com",
     likesCount: 9800,
     highlights: [
@@ -154,7 +154,7 @@ export const REELS: ReelItem[] = [
     productSlug: "plaud-note-enregistreur",
     durationSeconds: 24,
     sourceType: "preview",
-    posterUrl: "/images/products/cat-bureau-tech.svg",
+    posterUrl: "/images/products/plaud-note-enregistreur.svg",
     externalUrl: "https://www.plaud.ai",
     likesCount: 31800,
     highlights: [
@@ -172,7 +172,7 @@ export const REELS: ReelItem[] = [
     productSlug: "porte-cles-carbone-find-my",
     durationSeconds: 17,
     sourceType: "instagram",
-    posterUrl: "/images/products/cat-bureau-tech.svg",
+    posterUrl: "/images/products/porte-cles-carbone-find-my.svg",
     externalUrl: "https://www.instagram.com/p/Dd-jloQR6EA/",
     likesCount: 41200,
     highlights: [

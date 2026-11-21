@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="48%" r="52%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.16"/>
+      <stop offset="65%" stop-color="#141821" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0b0c0e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" stroke="#1b1f28" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#0b0d11"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <rect x="28" y="28" width="744" height="544" rx="18" fill="#11141b" fill-opacity="0.78" stroke="#262b36" stroke-width="1.5"/>
+  <rect x="36" y="36" width="728" height="528" rx="13" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+  <text x="60" y="72" fill="#8b93a5" font-family="monospace" font-size="12" letter-spacing="2.2">MECA LAB // ORGANISEUR FIND MY</text>
+  <rect x="610" y="53" width="130" height="26" rx="6" fill="#181c25" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.2"/>
+  <text x="675" y="70" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="bold" letter-spacing="1.5">CARBONE + BLE</text>
+  <line x1="60" y1="92" x2="740" y2="92" stroke="#232833" stroke-width="1"/>
+  
+      <rect x="220" y="245" width="235" height="96" rx="24" fill="#181c24" stroke="#9ca3af" stroke-width="2.5"/>
+      <path d="M430 265 L585 210 L595 236 L445 292 Z" fill="#272d3a" stroke="#f59e0b" stroke-width="2"/>
+      <path d="M430 315 L585 365 L595 339 L445 292 Z" fill="#272d3a" stroke="#9ca3af" stroke-width="2"/>
+      <circle cx="262" cy="293" r="14" fill="#0d1016" stroke="#f59e0b" stroke-width="2.5"/>
+      <circle cx="365" cy="293" r="16" fill="#3b82f6" fill-opacity="0.28" stroke="#3b82f6" stroke-width="2"/>
+      <circle cx="365" cy="293" r="5" fill="#3b82f6"/>
+    
+  <line x1="60" y1="504" x2="740" y2="504" stroke="#232833" stroke-width="1"/>
+  <text x="60" y="534" fill="#d1d5db" font-family="monospace" font-size="12" letter-spacing="1.2">CARBONE FORGE 1.5 MM // 6 CLES</text>
+  <text x="740" y="534" text-anchor="end" fill="#f59e0b" font-family="monospace" font-size="12" letter-spacing="1.2">LOCALISATION APPLE FIND MY</text>
+</svg>
