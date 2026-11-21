@@ -8,6 +8,7 @@ import {
   CircleMinus,
   Lightbulb,
   PlayCircle,
+  Scale,
   TriangleAlert,
 } from "lucide-react";
 import {
@@ -171,24 +172,47 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           </section>
 
-          <a
-            href={product.media.externalDemoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 self-start text-sm font-medium text-text-secondary transition-colors hover:text-accent"
-          >
-            <PlayCircle
-              className="h-4 w-4"
-              strokeWidth={1.75}
-              aria-hidden="true"
-            />
-            Voir la démo vidéo
-            <ArrowUpRight
-              className="h-3.5 w-3.5"
-              strokeWidth={1.75}
-              aria-hidden="true"
-            />
-          </a>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            {product.reelId ? (
+              <Link
+                href={`/reels?reel=${product.reelId}`}
+                className="inline-flex items-center gap-2 rounded-lg border border-accent/40 bg-accent-muted px-3.5 py-2 text-xs font-semibold text-accent transition-colors hover:bg-accent hover:text-bg"
+              >
+                <PlayCircle
+                  className="h-4 w-4"
+                  strokeWidth={1.75}
+                  aria-hidden="true"
+                />
+                Voir dans le flux Reels
+              </Link>
+            ) : null}
+
+            <Link
+              href={`/compare?items=${product.slug}`}
+              className="inline-flex items-center gap-2 rounded-lg border border-border-strong bg-surface px-3.5 py-2 text-xs font-medium text-text-secondary transition-colors hover:border-text-muted hover:text-text"
+            >
+              <Scale
+                className="h-3.5 w-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+              Comparer cet outil
+            </Link>
+
+            <a
+              href={product.media.externalDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-1 py-2 text-xs font-medium text-text-secondary transition-colors hover:text-accent"
+            >
+              Source vidéo externe
+              <ArrowUpRight
+                className="h-3.5 w-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+            </a>
+          </div>
         </div>
       </div>
 

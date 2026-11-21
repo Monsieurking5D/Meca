@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| `T-006` | `Claude` | Flux Reels plein écran (scroll-snap, lecture/pause/son, overlay produit + panier 1 clic, clavier, filtre catégorie) | `src/components/reels/*`, `src/app/reels/*`, `src/components/shop/ShopShell.tsx` (suppression, code mort depuis T-005b) | LIBÉRÉ (DONE 2026-11-21 02:00) | 2026-11-21 01:40 |
+| _Aucune_ | — | _Aucun verrou actif — Vagues 0 à 4 terminées (MECA Lab V1 prêt pour production)._ | — | — | — |
 
 ---
 
@@ -335,3 +335,22 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
   - **Données (`Freebuff`) :** déposer un MP4 (`sourceType: "mp4"`, `videoUrl: "/videos/…"`, poster 9:16 de préférence) active automatiquement la vraie vidéo et le contrôle du son. Les posters actuels sont en paysage (affichés en `contain` sur fond flouté).
   - Pas de tests automatisés (pas de framework de test). Logique pure testable : `reel-params.ts`.
   - Verrou `T-006` libéré.
+
+### [START] [T-008] [Antigravity] — 2026-11-21 01:56
+- **Objectif :** Vague 4 — finaliser la page d'accueil hybride (aperçus Reels cliquables `/reels?reel=`, cartes interactives `ProductGrid` avec panier/favoris, index 5 métiers avec compteurs, bloc comparateur & manifeste), ajouter les liens « Voir dans le flux Reels » et « Comparer » sur `/product/[slug]`, exécuter toute la batterie de tests + QA visuelle navigateur et pousser `main` sur GitHub / Vercel.
+- **Fichiers ciblés / verrouillés :** `src/app/page.tsx`, `src/app/product/[slug]/page.tsx`, `AGENT_COMMS.md`
+- **Dépendances / Notes :** Suite au commit `T-006` (`754d641`, Claude) et `T-007` (`726ad75`, Freebuff). Aucun verrou actif.
+
+### [DONE] [T-008] [Antigravity] — 2026-11-21 01:58
+- **Fichiers créés / modifiés / supprimés :**
+  - `src/app/page.tsx` (modifié — page d'accueil hybride finale : Hero asymétrique avec aperçu Reel + accès rapide 2 autres Reels, grille 4 Reels phares cliquables vers `/reels?reel=`, index 5 métiers avec compteurs live, grille interactive `ProductGrid` des 6 produits phares avec `+ Panier` & favoris, bandeau Comparateur `/compare` & Manifeste `/about`)
+  - `src/app/product/[slug]/page.tsx` (modifié — ajout des liens « Voir dans le flux Reels » `/reels?reel=...` et « Comparer cet outil » `/compare?items=...` à côté de la source vidéo externe)
+  - `AGENT_COMMS.md` (modifié — clôture et libération du verrou `T-008`)
+- **Résumé des changements :** Finalisation complète de l'assemblage V1 entre le socle (`T-003`), le catalogue et les primitives UI (`Freebuff` `T-004`/`T-007`) et la boutique / flux Reels (`Claude` `T-005`/`T-006`).
+- **Vérifications :**
+  - `node scripts/validate-catalog.mjs` → OK (25 produits · 5 catégories · 10 reels, 0 avertissement)
+  - `npm run lint` → OK (exit 0)
+  - `npx tsc --noEmit` → OK (exit 0)
+  - `npm run build` → OK (Turbopack, 36 pages générées : `/`, `/reels`, `/shop`, `/product/[slug]` ×25 SSG, `/compare`, `/favorites`, `/about`, `/checkout`, `/robots.txt`, `/sitemap.xml`)
+  - Aperçu local + inspection visuelle navigateur sur `http://localhost:3000` lancés juste après le push `main`.
+- **Passation / Impact pour les autres agents :** Vagues 0 à 4 terminées et poussées sur `origin/main` (`https://github.com/Monsieurking5D/Meca.git`). Aucun verrou actif.
