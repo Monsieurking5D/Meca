@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Menuiserie et vissage — MECA Lab">
+  <defs>
+    <pattern id="grid-bois" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#191c22" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade-bois" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.35" stop-color="#0b0c0e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0b0c0e" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0b0c0e"/>
+  <rect width="1200" height="900" fill="url(#grid-bois)"/>
+  <g fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M356 560 L760 560"/>
+    <path d="M760 560 L840 640"/>
+    <path d="M356 560 L356 320 L500 320 L540 400"/>
+    <path d="M700 320 L840 320 L840 480"/>
+  </g>
+  <g fill="#f59e0b" fill-opacity="0.16" stroke="#f59e0b" stroke-width="9" stroke-linejoin="round">
+    <path d="M420 640 L470 640 L445 700 Z"/>
+    <path d="M520 640 L570 640 L545 700 Z"/>
+    <path d="M620 640 L670 640 L645 700 Z"/>
+  </g>
+  <circle cx="310" cy="620" r="18" fill="#f59e0b"/>
+  <circle cx="356" cy="560" r="18" fill="#f59e0b"/>
+  <rect width="1200" height="900" fill="url(#fade-bois)"/>
+  <text x="72" y="792" fill="#6b7280" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" letter-spacing="7">MENUISERIE</text>
+  <text x="1128" y="128" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" text-anchor="end" letter-spacing="4">03 / MECA LAB</text>
+</svg>

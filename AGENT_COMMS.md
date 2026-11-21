@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| _Aucune_ | — | _Aucun verrou actif — Vague 1 (T-003) terminée. Prêt pour la Vague 2 en parallèle : Freebuff (T-004) \|\| Claude (T-005)._ | — | — | — |
+| `T-005` | `Claude` | Boutique, filtres, fiches produits, panier/favoris persistés, checkout démo | `src/store/*`, `src/components/shop/*`, `src/app/shop/*`, `src/app/product/*`, `src/app/checkout/*` | EN COURS | 2026-11-21 01:15 |
 
 ---
 
@@ -192,3 +192,31 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
     - Importer les données uniquement depuis `@/data` et les types depuis `@/types`.
     - Créer le store dans `src/store/*` (`cart-context.tsx`, `favorites-context.tsx`) et les composants boutique dans `src/components/shop/*` + pages `/shop`, `/product/[slug]`, `/checkout`.
     - Ne pas éditer `src/app/layout.tsx`, `Header.tsx` ni `src/components/providers/AppProviders.tsx` directement : exporter des providers/hooks propres et un `CartDrawer` autonome (ou envelopper au niveau des pages si besoin immédiat) ; `Antigravity` effectuera le branchement global dans `AppProviders.tsx` et `Header.tsx` en `T-008` (ou sur `[REQUEST / MSG]`).
+
+### [START] [T-004] [Freebuff] — 2026-11-21 01:20
+- **Objectif :** Vague 2 — livrer le catalogue réel (~25 produits répartis sur les 5 catégories) + les démos Reels associées et les primitives UI réutilisables, en respectant strictement les contrats `src/types/*` figés en `T-003`.
+- **Fichiers ciblés / verrouillés :** `src/data/categories.ts`, `src/data/products.ts`, `src/data/reels.ts`, `src/data/helpers.ts`, `src/data/index.ts`, `src/components/ui/*`, `public/images/products/cat-*.svg`
+- **Dépendances / Notes :** Suite à `[DONE] [T-003]` (Antigravity). Les noms exportés de `@/data` (`CATEGORIES`, `PRODUCTS`, `REELS`, `getCategoryBySlug`, `getProductBySlug`, `getProductsByCategory`, `getFeaturedProducts`, `getReelById`, `getReelsByCategory`, `filterProducts`, `searchProducts`) sont conservés à l'identique pour ne pas casser `Claude` (`T-005`/`T-006`). Aucun fichier de `Claude` (`src/store/*`, `src/components/shop/*`, `src/app/shop/*`) ni fichier partagé (`src/types/*`, `src/app/layout.tsx`, `src/app/globals.css`, `Header.tsx`, `AppProviders.tsx`, `package.json`) ne sera modifié.
+
+### [START] [T-005] [Claude] — 2026-11-21 01:15
+- **Objectif :** Store panier + favoris (Context + `useReducer` immuable, persistance `localStorage` ré-hydratée depuis `@/data`), composants boutique (`ProductCard`, `ProductGrid`, `FilterBar`, `CartDrawer`, `CheckoutForm`…) et pages `/shop` (filtres synchronisés dans l'URL), `/product/[slug]` (SSG), `/checkout` (tunnel démo sans Stripe).
+- **Fichiers ciblés / verrouillés :** `src/store/*`, `src/components/shop/*`, `src/app/shop/*`, `src/app/product/*`, `src/app/checkout/*`
+- **Dépendances / Notes :** Part du commit `214e40e` (`T-003`). Aucune nouvelle dépendance. Pas d'édition de `AppProviders.tsx` / `Header.tsx` / `layout.tsx` : providers enveloppés localement via `src/app/{shop,product,checkout}/layout.tsx` en attendant le branchement global `T-008`.
+
+### [DONE] [T-004] [Freebuff] — 2026-11-21 01:31
+- **Fichiers créés / modifiés / supprimés :**
+  - `src/data/categories.ts`, `src/data/products.ts`, `src/data/reels.ts`, `src/data/helpers.ts` (créés)
+  - `src/data/index.ts` (modifié — re-exporte les 4 modules, tous les noms exportés de `T-003` conservés à l’identique)
+  - `src/components/ui/Button.tsx`, `Badge.tsx`, `Card.tsx`, `PriceTag.tsx`, `RatingStars.tsx`, `EmptyState.tsx`, `Modal.tsx`, `Toast.tsx`, `index.ts` (créés)
+  - `public/images/products/cat-mecanique.svg`, `cat-electricite.svg`, `cat-menuiserie.svg`, `cat-mesure.svg`, `cat-bureau-tech.svg` (créés)
+- **Résumé des changements :** Catalogue réel de **25 produits** (5 par rayon : Mécanique, Électricité, Menuiserie, Mesure, Bureau/Tech) avec problème résolu, twist, prix EUR + fourchette revendeur, specs, points forts/faibles, note, grade de robustesse et visuel local ; **10 Reels** raccordés aux fiches ; helpers de lecture, filtrage et tri (mêmes signatures que le stub) ; **8 primitives UI** tokenisées (`ui/index.ts` en point d’entrée) : `Button`, `Badge`, `Card`+`CardHeader/Body/Footer`, `PriceTag`, `RatingStars`, `EmptyState`, `Modal` (portail, Échap, verrou de scroll) et `Toast` (`ToastProvider` + `useToast`). Aucune nouvelle dépendance.
+- **Vérifications :**
+  - `npm run lint` → OK (exit 0, 0 erreur / 0 warning)
+  - `npx tsc --noEmit` → OK (exit 0)
+  - `npm run build` → OK (Turbopack, routes `/` et `/_not-found` générées)
+- **Passation / Impact pour les autres agents :**
+  - `@/data` expose toujours `CATEGORIES`, `PRODUCTS`, `REELS`, `getCategoryBySlug`, `getProductBySlug`, `getProductsByCategory`, `getFeaturedProducts`, `getReelById`, `getReelsByCategory`, `filterProducts`, `searchProducts`, plus `getProductById`, `getProductsBySlugs`, `getReelsByProductSlug` (utiles pour `/compare` et l’overlay Reels).
+  - `filterProducts` ne mute pas le tableau reçu et renvoie une copie triée : réutilisable tel quel dans `/shop`.
+  - `Product.reelId` n’est renseigné que pour les 10 fiches disposant d’une démo ; les 15 autres fiches n’ont pas de Reel.
+  - Primitives UI prêtes pour `Claude` (`@/components/ui`) : `Button`, `Badge`, `Card`, `PriceTag`, `RatingStars`, `EmptyState`, `Modal`, `Toast`. `Toast` nécessite encore un `ToastProvider` ; `Antigravity` peut le brancher dans `AppProviders.tsx` en `T-008` (ou `Claude` localement sur ses pages).
+  - Aucun fichier partagé modifié (`src/types/*`, `layout.tsx`, `globals.css`, `Header.tsx`, `AppProviders.tsx`, `package.json`). Verrou `T-004` libéré.

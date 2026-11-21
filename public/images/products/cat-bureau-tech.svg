@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Bureau, tech et EDC — MECA Lab">
+  <defs>
+    <pattern id="grid-tech" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#191c22" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade-tech" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.35" stop-color="#0b0c0e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0b0c0e" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0b0c0e"/>
+  <rect width="1200" height="900" fill="url(#grid-tech)"/>
+  <g fill="none" stroke="#f59e0b" stroke-width="11" stroke-linejoin="round">
+    <rect x="470" y="286" width="300" height="300" rx="18"/>
+    <rect x="536" y="352" width="168" height="168" rx="12" opacity="0.5"/>
+  </g>
+  <g stroke="#f59e0b" stroke-width="10" stroke-linecap="round" opacity="0.8">
+    <path d="M470 340 H400 M470 400 H400 M470 460 H400 M470 520 H400"/>
+    <path d="M770 340 H840 M770 400 H840 M770 460 H840 M770 520 H840"/>
+    <path d="M540 286 V226 M600 286 V226 M660 286 V226 M720 286 V226"/>
+    <path d="M540 586 V646 M600 586 V646 M660 586 V646 M720 586 V646"/>
+  </g>
+  <g fill="#f59e0b">
+    <rect x="572" y="388" width="96" height="96" rx="10" opacity="0.9"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#fade-tech)"/>
+  <text x="72" y="792" fill="#6b7280" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" letter-spacing="7">BUREAU / TECH</text>
+  <text x="1128" y="128" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" text-anchor="end" letter-spacing="4">05 / MECA LAB</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Mécanique et accès difficiles — MECA Lab">
+  <defs>
+    <pattern id="grid-mecanique" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#191c22" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade-mecanique" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.35" stop-color="#0b0c0e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0b0c0e" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0b0c0e"/>
+  <rect width="1200" height="900" fill="url(#grid-mecanique)"/>
+  <g fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M600 250 L746 334 L746 502 L600 586 L454 502 L454 334 Z"/>
+    <circle cx="600" cy="418" r="86"/>
+    <path d="M600 250 L600 178 M746 334 L812 296 M746 502 L812 540 M600 586 L600 658 M454 502 L388 540 M454 334 L388 296" opacity="0.55"/>
+  </g>
+  <circle cx="600" cy="418" r="26" fill="#f59e0b"/>
+  <rect width="1200" height="900" fill="url(#fade-mecanique)"/>
+  <text x="72" y="792" fill="#6b7280" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" letter-spacing="7">MÉCANIQUE</text>
+  <text x="1128" y="128" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" text-anchor="end" letter-spacing="4">01 / MECA LAB</text>
+</svg>

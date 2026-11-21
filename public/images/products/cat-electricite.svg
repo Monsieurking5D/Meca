@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Électricité et câblage — MECA Lab">
+  <defs>
+    <pattern id="grid-elec" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#191c22" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade-elec" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.35" stop-color="#0b0c0e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0b0c0e" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0b0c0e"/>
+  <rect width="1200" height="900" fill="url(#grid-elec)"/>
+  <g fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M404 236 L640 236 L760 452 L560 452 L640 664 L400 406 L592 406 Z" fill="#f59e0b" fill-opacity="0.14"/>
+  </g>
+  <path d="M640 236 L760 452 L560 452 L640 664 L400 406 L592 406 Z" fill="none" stroke="#f59e0b" stroke-width="14" stroke-linejoin="round"/>
+  <g stroke="#363c4a" stroke-width="6" stroke-linecap="round" opacity="0.9">
+    <path d="M300 700 H900"/>
+    <path d="M300 740 H900"/>
+  </g>
+  <circle cx="880" cy="720" r="20" fill="#f59e0b"/>
+  <rect width="1200" height="900" fill="url(#fade-elec)"/>
+  <text x="72" y="792" fill="#6b7280" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" letter-spacing="7">ÉLECTRICITÉ</text>
+  <text x="1128" y="128" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" text-anchor="end" letter-spacing="4">02 / MECA LAB</text>
+</svg>

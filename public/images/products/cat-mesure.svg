@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Mesure et précision — MECA Lab">
+  <defs>
+    <pattern id="grid-mesure" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#191c22" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade-mesure" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.35" stop-color="#0b0c0e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0b0c0e" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0b0c0e"/>
+  <rect width="1200" height="900" fill="url(#grid-mesure)"/>
+  <g fill="none" stroke="#f59e0b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="360" y="300" width="480" height="240"/>
+    <path d="M420 300 V370 M480 300 V350 M540 300 V370 M600 300 V350 M660 300 V370 M720 300 V350 M780 300 V370"/>
+  </g>
+  <g stroke="#f59e0b" stroke-width="8" stroke-linecap="round" opacity="0.85">
+    <path d="M600 600 V700"/>
+    <path d="M520 660 H680"/>
+  </g>
+  <circle cx="600" cy="420" r="34" fill="none" stroke="#f59e0b" stroke-width="9"/>
+  <circle cx="600" cy="420" r="10" fill="#f59e0b"/>
+  <rect width="1200" height="900" fill="url(#fade-mesure)"/>
+  <text x="72" y="792" fill="#6b7280" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="34" letter-spacing="7">MESURE</text>
+  <text x="1128" y="128" fill="#f59e0b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" text-anchor="end" letter-spacing="4">04 / MECA LAB</text>
+</svg>
