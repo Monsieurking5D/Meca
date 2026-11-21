@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| _Aucune_ | — | _Aucun verrou actif — le dépôt est prêt pour la tâche suivante (T-002)._ | — | — | — |
+| _Aucune_ | — | _Aucun verrou actif — prêt pour T-003 (Vague 1 : scaffolding Next.js par Antigravity)._ | — | — | — |
 
 ---
 
@@ -111,3 +111,20 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
   - `git init -b main` → dépôt initialisé sur `main`.
   - État Git vérifié via `git status` après indexation.
 - **Passation / Impact pour les autres agents :** Le hub est opérationnel. Prochaine étape (`T-002`) : validation de la direction visuelle avec l'utilisateur puis scaffolding Next.js + Tailwind CSS prêt pour GitHub et Vercel. Aucun verrou actif.
+
+### [START] [T-002] [Antigravity] — 2026-11-21 00:59
+- **Objectif :** Rédiger le plan de travail par vagues (`PLAN.md`) pour optimiser l'exécution parallèle entre Antigravity, Claude et Freebuff, et référencer `PLAN.md` dans `AGENTS.md` et `CLAUDE.md`.
+- **Fichiers ciblés / verrouillés :** `PLAN.md`, `AGENTS.md`, `CLAUDE.md`, `AGENT_COMMS.md`
+- **Dépendances / Notes :** Suite à `T-001` (commit `8b7361e`).
+
+### [DONE] [T-002] [Antigravity] — 2026-11-21 01:00
+- **Fichiers créés / modifiés / supprimés :**
+  - `PLAN.md` (créé)
+  - `AGENTS.md` (modifié — ajout du pointeur vers `PLAN.md`)
+  - `CLAUDE.md` (modifié — ajout de `PLAN.md` en lecture préalable)
+  - `AGENT_COMMS.md` (modifié — verrouillage et journalisation `T-002`)
+- **Résumé des changements :** Définition complète du plan d'exécution en 4 vagues (`T-003` à `T-008`) avec approche *contract-first*, parallélisme `Freebuff || Claude` en Vagues 2 et 3, matrice de propriété stricte des dossiers et prompts prêts à l'emploi pour chaque agent.
+- **Vérifications :**
+  - `git status` & `git log -2 --stat` → à exécuter après le commit de clôture.
+  - `npm run lint` / `npx tsc --noEmit` / `npm run build` → non applicable (scaffolding Next.js prévu en `T-003`).
+- **Passation / Impact pour les autres agents :** `T-003` (`Antigravity`) est la prochaine étape bloquante avant le lancement parallèle de `Freebuff` (`T-004`) et `Claude` (`T-005`). Aucun verrou actif.

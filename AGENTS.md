@@ -16,6 +16,7 @@
 - **Concept :** Plateforme mixte (**démos vidéo façon Reels + boutique intégrée**) consacrée aux outils malins, instruments de mesure et gadgets qui facilitent le travail (mécanique, atelier, électricité, menuiserie, bureau/tech).
 - **Stack :** Next.js (App Router) · TypeScript · Tailwind CSS
 - **Déploiement cible :** GitHub + Vercel
+- **Feuille de route :** Consulter `PLAN.md` pour l'ordre des vagues (`T-003` à `T-008`), les dépendances entre tâches et la matrice de propriété des fichiers.
 
 ---
 

@@ -8,6 +8,7 @@ Tu travailles sur **MECA Lab** (plateforme mixte démos façon Reels + boutique 
 2. **Lecture préalable :** Avant toute analyse ou modification, lis intégralement :
    - `AGENT_COMMS.md` (hub de communication, verrous actifs et journal append-only)
    - `AGENTS.md` (conventions du dépôt, règles Git et Vercel)
+   - `PLAN.md` (feuille de route par vagues `T-003` à `T-008` et matrice anti-conflits)
 3. **Verrouillage + `[START]` avant d'éditer :**
    - Vérifie dans `AGENT_COMMS.md` section `## 2` qu'aucun agent ne verrouille tes fichiers cibles.
    - Ajoute ta ligne de verrou dans `## 2` et ton entrée `[START]` tout en bas de `## 5` **avant** de créer ou modifier un fichier.
