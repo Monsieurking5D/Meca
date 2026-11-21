@@ -51,7 +51,8 @@ interface ReadableParams {
 
 /** Parses untrusted query params into a valid filter state (never throws). */
 export function parseFilterParams(params: ReadableParams): ProductFilterState {
-  const category = params.get(FILTER_PARAM.category);
+  const category =
+    params.get(FILTER_PARAM.category) ?? params.get("category");
   const durability = params.get(FILTER_PARAM.durability);
   const sort = params.get(FILTER_PARAM.sort);
   const maxPrice = Number(params.get(FILTER_PARAM.maxPrice));

@@ -11,7 +11,7 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
-import { CATEGORIES, PRODUCTS, REELS } from "@/data";
+import { CATEGORIES, getFeaturedProducts, PRODUCTS, REELS } from "@/data";
 import { formatCompactCount, formatPriceEur } from "@/lib/utils";
 
 const CATEGORY_ICONS = {
@@ -25,6 +25,7 @@ const CATEGORY_ICONS = {
 export default function HomePage() {
   const heroReel = REELS[0];
   const heroProduct = PRODUCTS.find((p) => p.slug === heroReel?.productSlug);
+  const featuredProducts = getFeaturedProducts().slice(0, 6);
 
   return (
     <div className="bg-workshop-grid">
@@ -181,7 +182,7 @@ export default function HomePage() {
             return (
               <Link
                 key={category.slug}
-                href={`/shop?category=${category.slug}`}
+                href={`/shop?cat=${category.slug}`}
                 className="group flex flex-col justify-between rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/50 hover:bg-surface-elevated"
               >
                 <div>
@@ -210,25 +211,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Starter Showcase (Expanded by Freebuff in T-004 & Antigravity in T-008) */}
+      {/* Featured Showcase */}
       <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-4 border-b border-border pb-5 sm:flex-row sm:items-end">
           <div>
             <p className="font-mono text-xs uppercase tracking-wider text-accent">
-              Banc d&apos;essai initial
+              Banc d&apos;essai · {PRODUCTS.length} outils référencés
             </p>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight text-text">
-              Sélection issue des premiers Reels analysés
+              Sélection phare MECA Lab
             </h2>
           </div>
-          <div className="flex items-center gap-2 font-mono text-xs text-text-secondary">
-            <ShieldCheck className="h-4 w-4 text-accent" strokeWidth={1.75} />
-            <span>Filtrage vrai outil vs gadget fragile</span>
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex items-center gap-2 font-mono text-xs text-text-secondary">
+              <ShieldCheck className="h-4 w-4 text-accent" strokeWidth={1.75} />
+              <span>Filtrage vrai outil vs gadget fragile</span>
+            </div>
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-accent transition-colors hover:text-text"
+            >
+              <span>Voir toute la boutique</span>
+              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+            </Link>
           </div>
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {PRODUCTS.map((product) => (
+          {featuredProducts.map((product) => (
             <article
               key={product.id}
               className="flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-border-strong"

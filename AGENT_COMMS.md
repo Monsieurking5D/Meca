@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| `T-005` | `Claude` | Boutique, filtres, fiches produits, panier/favoris persistés, checkout démo | `src/store/*`, `src/components/shop/*`, `src/app/shop/*`, `src/app/product/*`, `src/app/checkout/*` | LIBÉRÉ (DONE 2026-11-21 01:28) | 2026-11-21 01:15 |
+| _Aucune_ | — | _Aucun verrou actif — Vague 2 intégrée globalement (T-005b). Prêt pour la Vague 3 en parallèle : Claude (T-006) \|\| Freebuff (T-007)._ | — | — | — |
 
 ---
 
@@ -243,3 +243,29 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
   - **`Freebuff` (`T-007`) :** page favoris → `useFavorites()` + `getProductsBySlugs`/`getProductById`. Seules 3 vignettes produit dédiées existent dans `public/images/products/` ; les autres fiches utilisent les visuels `cat-*.svg`.
   - Pas de framework de test dans `package.json` : logique pure testable (`cart-logic.ts`, `filter-params.ts`, `checkout-logic.ts`) — ajout de Vitest à décider via `[REQUEST / MSG]`.
   - Verrou `T-005` libéré.
+
+### [START] [T-005b] [Antigravity] — 2026-11-21 01:35
+- **Objectif :** Finaliser l'intégration Vague 2 avant de lancer la Vague 3 : brancher `StoreProviders`, `ToastProvider` et `CartDrawer` globalement dans `AppProviders.tsx`, retirer les 3 wrappers temporaires `src/app/{shop,product,checkout}/layout.tsx`, activer les compteurs live panier/favoris dans `Header.tsx` et `MobileNav.tsx`, aligner les liens `/shop?cat=` (avec fallback `?category=`) et limiter l'accueil à la sélection phare (`getFeaturedProducts().slice(0, 6)`).
+- **Fichiers ciblés / verrouillés :** `src/components/providers/AppProviders.tsx`, `src/components/layout/Header.tsx`, `src/components/layout/MobileNav.tsx`, `src/components/layout/Footer.tsx`, `src/app/page.tsx`, `src/components/shop/filter-params.ts`, `src/app/shop/layout.tsx`, `src/app/product/layout.tsx`, `src/app/checkout/layout.tsx`, `AGENT_COMMS.md`
+- **Dépendances / Notes :** Commit `T-005` enregistré juste avant (`090c310`) ; aucun verrou actif.
+
+### [DONE] [T-005b] [Antigravity] — 2026-11-21 01:37
+- **Fichiers créés / modifiés / supprimés :**
+  - `src/components/providers/AppProviders.tsx` (modifié — montage global `StoreProviders`, `ToastProvider`, `CartDrawer`)
+  - `src/components/layout/Header.tsx` (modifié — compteur favoris live + bouton panier ouvrant `CartDrawer` avec compteur live)
+  - `src/components/layout/MobileNav.tsx` (modifié — pastille compteur favoris live)
+  - `src/components/layout/Footer.tsx` (modifié — liens rayons alignés sur `/shop?cat=`)
+  - `src/components/shop/filter-params.ts` (modifié — accepte `?cat=` et en fallback `?category=`)
+  - `src/app/page.tsx` (modifié — liens `/shop?cat=` et vitrine limitée à `getFeaturedProducts().slice(0, 6)`)
+  - `src/app/shop/layout.tsx`, `src/app/product/layout.tsx`, `src/app/checkout/layout.tsx` (supprimés — devenus inutiles grâce au montage global dans `AppProviders.tsx`)
+  - `AGENT_COMMS.md` (modifié — clôture et libération du verrou `T-005b`)
+- **Résumé des changements :** Raccordement global du store panier/favoris, du système de toasts et du tiroir panier `CartDrawer` à l'échelle de tout le site, affichage des compteurs live dans le Header et la barre mobile, harmonisation des query params `/shop?cat=` et recalibrage de l'accueil sur les 6 produits phares.
+- **Vérifications :**
+  - `npx next typegen` → OK (cache `.next/types` régénéré suite à suppression des 3 layouts temporaires)
+  - `npm run lint` → OK (exit 0)
+  - `npx tsc --noEmit` → OK (exit 0)
+  - `npm run build` → OK (30 pages générées avec Turbopack)
+- **Passation / Impact pour les autres agents (Vague 3 débloquée) :**
+  - **Pour `Claude` (`T-006`) et `Freebuff` (`T-007`) :** `StoreProviders`, `ToastProvider` et `CartDrawer` sont désormais montés **globalement** dans `AppProviders.tsx`. Ne pas recréer de wrapper `layout.tsx` local sur `/reels`, `/favorites` ou `/compare` : `useCart()`, `useFavorites()` et `useToast()` fonctionnent directement partout.
+  - **Pour `Freebuff` (`T-007`) :** en complément de `T-007`, recaler la fiche `organiseur-pliant-find-my` dans `src/data/products.ts` et `src/data/reels.ts` sur le **porte-clés carbone pliant compatible Apple Find My** du reel `@thetrazix` (`https://www.instagram.com/p/Dd-jloQR6EA/`).
+  - Aucun verrou actif.

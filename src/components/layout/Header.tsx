@@ -12,10 +12,14 @@ import {
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { useCart, useFavoritesCount } from "@/store";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { totals, openDrawer } = useCart();
+  const favoritesCount = useFavoritesCount();
+  const cartCount = totals.itemCount;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur-md">
@@ -95,20 +99,29 @@ export function Header() {
 
           <Link
             href="/favorites"
-            aria-label="Outils favoris"
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-colors hover:border-border-strong hover:text-text"
+            aria-label={`Outils favoris (${favoritesCount})`}
+            className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface text-text-secondary transition-colors hover:border-border-strong hover:text-text"
           >
             <Bookmark className="h-4 w-4" strokeWidth={1.75} />
+            {favoritesCount > 0 ? (
+              <span className="absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 font-mono text-[10px] font-bold tabular-nums text-bg">
+                {favoritesCount}
+              </span>
+            ) : null}
           </Link>
 
-          <Link
-            href="/checkout"
-            aria-label="Panier et commande"
+          <button
+            type="button"
+            onClick={openDrawer}
+            aria-label={`Ouvrir le panier (${cartCount} article${cartCount > 1 ? "s" : ""})`}
             className="flex h-9 items-center gap-2 rounded-lg border border-accent/40 bg-accent-muted px-3 text-xs font-semibold text-accent transition-transform active:scale-[0.98] hover:bg-accent hover:text-bg"
           >
             <ShoppingBag className="h-4 w-4" strokeWidth={1.75} />
             <span className="hidden font-mono sm:inline">PANIER</span>
-          </Link>
+            <span className="min-w-5 rounded bg-bg/60 px-1 text-center font-mono text-xs tabular-nums">
+              {cartCount}
+            </span>
+          </button>
 
           <button
             type="button"
