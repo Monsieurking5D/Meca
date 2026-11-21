@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| `T-005` | `Claude` | Boutique, filtres, fiches produits, panier/favoris persistés, checkout démo | `src/store/*`, `src/components/shop/*`, `src/app/shop/*`, `src/app/product/*`, `src/app/checkout/*` | EN COURS | 2026-11-21 01:15 |
+| `T-005` | `Claude` | Boutique, filtres, fiches produits, panier/favoris persistés, checkout démo | `src/store/*`, `src/components/shop/*`, `src/app/shop/*`, `src/app/product/*`, `src/app/checkout/*` | LIBÉRÉ (DONE 2026-11-21 01:28) | 2026-11-21 01:15 |
 
 ---
 
@@ -220,3 +220,26 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
   - `Product.reelId` n’est renseigné que pour les 10 fiches disposant d’une démo ; les 15 autres fiches n’ont pas de Reel.
   - Primitives UI prêtes pour `Claude` (`@/components/ui`) : `Button`, `Badge`, `Card`, `PriceTag`, `RatingStars`, `EmptyState`, `Modal`, `Toast`. `Toast` nécessite encore un `ToastProvider` ; `Antigravity` peut le brancher dans `AppProviders.tsx` en `T-008` (ou `Claude` localement sur ses pages).
   - Aucun fichier partagé modifié (`src/types/*`, `layout.tsx`, `globals.css`, `Header.tsx`, `AppProviders.tsx`, `package.json`). Verrou `T-004` libéré.
+
+### [DONE] [T-005] [Claude] — 2026-11-21 01:28
+- **Fichiers créés :**
+  - `src/store/cart-logic.ts`, `persistent-store.ts`, `cart-context.tsx`, `favorites-context.tsx`, `StoreProviders.tsx`, `index.ts`
+  - `src/components/shop/ProductCard.tsx`, `ProductGrid.tsx`, `ProductMeta.tsx`, `ProductActions.tsx`, `FilterBar.tsx`, `filter-params.ts`, `ShopCatalog.tsx`, `CartDrawer.tsx`, `CartTrigger.tsx`, `ShopShell.tsx`, `ProductGallery.tsx`, `ProductPurchasePanel.tsx`, `CheckoutForm.tsx`, `checkout-logic.ts`
+  - `src/app/shop/layout.tsx` + `page.tsx`, `src/app/product/layout.tsx` + `[slug]/page.tsx`, `src/app/checkout/layout.tsx` + `page.tsx`
+  - Aucun fichier partagé modifié (`src/types/*`, `src/data/*`, `layout.tsx`, `globals.css`, `Header.tsx`, `AppProviders.tsx`, `package.json`). Aucune dépendance ajoutée.
+- **Résumé :**
+  - Store panier/favoris : stores externes module-level (`useSyncExternalStore`) persistés `localStorage` (`meca-lab:cart:v1`), mises à jour immuables, ré-hydratation prix/nom/vignette depuis `@/data` (lignes obsolètes/rupture ignorées), totaux en centimes, livraison offerte dès 60 €, quantité max 10/ligne, synchro multi-onglets.
+  - `/shop` : filtres catégorie / recherche (debounce) / prix max / robustesse / en stock / tri, état dans l'URL (`?cat=&q=&max=&dur=&stock=1&sort=`), params non fiables validés, `Suspense` avec grille complète en fallback.
+  - `/product/[slug]` : SSG des 25 fiches (`generateStaticParams`, `dynamicParams = false` → 404 sinon), metadata + OG par produit, galerie, problème/astuce, specs, points forts/limites, note robustesse, lien démo externe (`noopener`), produits du même rayon, panneau quantité + ajout + favori.
+  - `/checkout` (noindex) : formulaire livraison validé (normalisation, e-mail, code postal par pays FR/BE/CH/LU, limites de longueur, focus 1er champ invalide, `aria-invalid`), récap, confirmation avec référence `MECA-XXXXXXXX`, vidage du panier.
+- **Vérifications :**
+  - `npx tsc --noEmit` → OK (exit 0)
+  - `npm run lint` → OK (0 erreur / 0 warning)
+  - `npm run build` → OK (Turbopack, 30 pages : `/shop`, `/checkout` statiques + 25 `/product/[slug]` SSG)
+  - Smoke `next start` : `/shop` 200, `/shop?cat=mesure&max=40` 200, `/product/lozlin-cliquet-rotatif` 200, `/product/nope` 404, `/checkout` 200.
+- **Passation / Impact pour les autres agents :**
+  - **`Antigravity` (`T-008`) :** monter `<StoreProviders>` + `<CartDrawer />` (exports `@/store` et `@/components/shop/CartDrawer`) une seule fois dans `AppProviders.tsx`, puis **supprimer** `src/app/{shop,product,checkout}/layout.tsx` (wrappers temporaires via `ShopShell`). Compteurs Header : `useCartCount()`, `useFavoritesCount()` ; bouton prêt à l'emploi : `CartTrigger`.
+  - **Stripe :** point d'entrée = `createDemoOrder()` dans `src/components/shop/checkout-logic.ts` (remplace le `submitOrder()` annoncé). À remplacer par un appel à `src/app/api/checkout/route.ts` qui **recalcule les prix côté serveur depuis `@/data`**.
+  - **`Freebuff` (`T-007`) :** page favoris → `useFavorites()` + `getProductsBySlugs`/`getProductById`. Seules 3 vignettes produit dédiées existent dans `public/images/products/` ; les autres fiches utilisent les visuels `cat-*.svg`.
+  - Pas de framework de test dans `package.json` : logique pure testable (`cart-logic.ts`, `filter-params.ts`, `checkout-logic.ts`) — ajout de Vitest à décider via `[REQUEST / MSG]`.
+  - Verrou `T-005` libéré.
