@@ -35,7 +35,7 @@
 
 | ID | Agent | Tâche | Fichiers verrouillés | Statut | Début |
 |---|---|---|---|---|---|
-| `T-006` | `Claude` | Flux Reels plein écran (scroll-snap, lecture/pause/son, overlay produit + panier 1 clic, clavier, filtre catégorie) | `src/components/reels/*`, `src/app/reels/*`, `src/components/shop/ShopShell.tsx` (suppression, code mort depuis T-005b) | EN COURS | 2026-11-21 01:40 |
+| `T-006` | `Claude` | Flux Reels plein écran (scroll-snap, lecture/pause/son, overlay produit + panier 1 clic, clavier, filtre catégorie) | `src/components/reels/*`, `src/app/reels/*`, `src/components/shop/ShopShell.tsx` (suppression, code mort depuis T-005b) | LIBÉRÉ (DONE 2026-11-21 02:00) | 2026-11-21 01:40 |
 
 ---
 
@@ -308,3 +308,30 @@ Copier-coller et compléter l'un des modèles suivants à la fin de la section `
   - **Changement d identifiants :** `prod-organiseur-findmy` / `organiseur-pliant-find-my` → `prod-porte-cles-carbone-findmy` / `porte-cles-carbone-find-my`. Un favori enregistré sur l ancien id est silencieusement ignoré par `parseStoredFavorites` (aucun crash). Plus aucune référence à l ancien slug dans le dépôt.
   - `/compare` est 100 % client sous `Suspense` : l URL reste partageable et les slugs non fiables sont filtrés côté client.
   - `sitemap.ts` inclut `/reels` ; si une route est retirée plus tard, retirer sa ligne de `STATIC_ROUTES`.
+
+### [DONE] [T-006] [Claude] — 2026-11-21 02:00
+- **Fichiers créés / modifiés / supprimés :**
+  - `src/components/reels/ReelFeed.tsx`, `ReelSlide.tsx`, `ReelMedia.tsx`, `ReelActions.tsx`, `ReelProductOverlay.tsx`, `ReelCategoryFilter.tsx`, `reel-params.ts` (créés)
+  - `src/app/reels/page.tsx` (créé)
+  - `src/components/shop/ShopShell.tsx` (supprimé — inutilisé depuis le montage global `T-005b`)
+  - Aucun fichier partagé, aucune donnée, aucune dépendance modifiés.
+- **Résumé :**
+  - `/reels` : flux vertical `scroll-snap` (y mandatory) ; slide active détectée par `IntersectionObserver` (seuil 60 %).
+  - Lecteur : `<video>` réel (muted/playsInline/loop, lecture auto sur slide active) pour `sourceType: "mp4"` ; pour `preview`/`instagram` (les 10 reels actuels) aperçu animé = poster `contain` sur fond flouté + Ken Burns + barre de progression calée sur `durationSeconds`, en pause hors slide active, onglet masqué ou `prefers-reduced-motion`. Pas d'iframe Instagram (ni tracking ni CSP tiers) : bouton « Source » externe `noopener`.
+  - Contrôles : tap sur la vidéo = lecture/pause, son (actif seulement si audio réel, sinon désactivé avec libellé explicite), favori produit (`useFavorites`), partage (`navigator.share` → repli presse-papiers + toast), likes de la source.
+  - Carte produit superposée : vignette, nom, prix, « Voir la fiche », « + Panier » 1 clic (`useCart().addItem` + toast), compteur « N au panier » ouvrant le `CartDrawer`, gestion rupture/quantité max.
+  - Navigation : ↑/↓ (ou K/J), Espace = pause, M = son (ignorés dans les champs ou si un `<dialog>` est ouvert) ; boutons ↑/↓ + compteur en desktop ; swipe natif mobile.
+  - URL : filtre `?cat=` (mêmes clés que `/shop`, valeurs non fiables rejetées) et lien profond `?reel=` (synchronisé via `history.replaceState`, sans navigation).
+  - Responsive : mobile plein écran (chips + rail superposés, rail compact sous 760 px de haut) ; desktop scène 9:16 centrée, chips au-dessus, rail à côté.
+- **Vérifications :**
+  - `npx tsc --noEmit` → OK (exit 0)
+  - `npm run lint` → OK (0 erreur / 0 warning)
+  - `npm run build` → OK (36 pages, `/reels` statique) — build combiné avec les changements `T-007`
+  - `node scripts/validate-catalog.mjs` → OK (25 produits · 5 catégories · 10 reels)
+  - Navigateur (`next start`) : desktop 1270×633 + mobile 390×560 / 390×844 (iframe). ↓ change de reel sans scroller la fenêtre, `?reel=` mis à jour ; « + Panier » → toast + compteur Header 1 ; `?cat=mesure` → 1 slide ; lien profond `?reel=reel-luxafor-duo` → slide 3/10 ; 0 erreur console.
+  - Bugs trouvés et corrigés pendant le test : `scrollIntoView` faisait défiler toute la page → `scrollTo` sur le conteneur ; course entre `router.replace` et la synchro `replaceState` qui annulait le filtre ; rail débordant sur la slide suivante sur petit écran.
+- **Passation / Impact pour les autres agents :**
+  - **`Antigravity` (`T-008`) :** accueil → lier un aperçu à `/reels?reel=<id>` ou `/reels?cat=<slug>`. `/reels` est déjà dans `sitemap.ts`.
+  - **Données (`Freebuff`) :** déposer un MP4 (`sourceType: "mp4"`, `videoUrl: "/videos/…"`, poster 9:16 de préférence) active automatiquement la vraie vidéo et le contrôle du son. Les posters actuels sont en paysage (affichés en `contain` sur fond flouté).
+  - Pas de tests automatisés (pas de framework de test). Logique pure testable : `reel-params.ts`.
+  - Verrou `T-006` libéré.
