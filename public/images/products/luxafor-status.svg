@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#0e1014"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" stroke="#1e222b" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect x="40" y="40" width="720" height="520" rx="16" stroke="#262a34" stroke-width="1.5" fill="#121418" fill-opacity="0.82"/>
+  <text x="72" y="84" fill="#9ca3af" font-family="monospace" font-size="13" letter-spacing="2">MECA LAB // BUREAU &amp; HARDWARE // RF SYNC</text>
+  <line x1="72" y1="104" x2="728" y2="104" stroke="#262a34" stroke-width="1"/>
+
+  <!-- Desktop Cube Controller -->
+  <rect x="160" y="245" width="160" height="160" rx="28" fill="#1a1d24" stroke="#f59e0b" stroke-width="2.5"/>
+  <rect x="176" y="261" width="128" height="128" rx="20" fill="#f59e0b" fill-opacity="0.16" stroke="#f59e0b" stroke-opacity="0.45" stroke-width="1.5"/>
+  <circle cx="240" cy="325" r="24" fill="#f59e0b" fill-opacity="0.28" stroke="#f59e0b" stroke-width="2"/>
+  <text x="240" y="440" text-anchor="middle" fill="#e5e7eb" font-family="monospace" font-size="13">CUBE BUREAU</text>
+
+  <!-- Wireless Link Indicator -->
+  <path d="M 355 325 H 445" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="400" cy="325" r="18" fill="#121418" stroke="#f59e0b" stroke-width="1.5"/>
+  <path d="M 392 325 C 396 318 404 318 408 325" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M 387 330 C 394 315 406 315 413 330" stroke="#f59e0b" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="400" y="295" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="11" letter-spacing="1.5">SYNC SANS FIL</text>
+
+  <!-- Wall / Doorframe Indicator Bar -->
+  <rect x="495" y="160" width="110" height="270" rx="18" fill="#1a1d24" stroke="#363c4a" stroke-width="2"/>
+  <rect x="507" y="172" width="86" height="86" rx="12" fill="#f59e0b" fill-opacity="0.22" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="520" y="340" width="60" height="10" rx="3" fill="#2d3340"/>
+  <rect x="530" y="362" width="40" height="6" rx="2" fill="#262a34"/>
+  <text x="550" y="460" text-anchor="middle" fill="#e5e7eb" font-family="monospace" font-size="13">BALISE PORTE</text>
+
+  <!-- State Legend Pills -->
+  <circle cx="100" cy="520" r="6" fill="#ef4444"/>
+  <text x="115" y="524" fill="#9ca3af" font-family="monospace" font-size="12">OCCUPE</text>
+  <circle cx="240" cy="520" r="6" fill="#3b82f6"/>
+  <text x="255" y="524" fill="#9ca3af" font-family="monospace" font-size="12">REUNION</text>
+  <circle cx="385" cy="520" r="6" fill="#f59e0b"/>
+  <text x="400" y="524" fill="#9ca3af" font-family="monospace" font-size="12">PAUSE</text>
+  <circle cx="515" cy="520" r="6" fill="#22c55e"/>
+  <text x="530" y="524" fill="#9ca3af" font-family="monospace" font-size="12">LIBRE</text>
+</svg>

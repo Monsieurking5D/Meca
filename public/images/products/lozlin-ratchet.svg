@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#0e1014"/>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" stroke="#1e222b" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  <rect x="40" y="40" width="720" height="520" rx="16" stroke="#262a34" stroke-width="1.5" fill="#121418" fill-opacity="0.82"/>
+  <text x="72" y="84" fill="#9ca3af" font-family="monospace" font-size="13" letter-spacing="2">MECA LAB // MECANIQUE // MULTI-ENTRAINEMENT</text>
+  <line x1="72" y1="104" x2="728" y2="104" stroke="#262a34" stroke-width="1"/>
+
+  <!-- Confined Space Obstacles -->
+  <rect x="120" y="160" width="560" height="44" rx="8" fill="#1a1d24" stroke="#2e3440" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <rect x="120" y="380" width="560" height="44" rx="8" fill="#1a1d24" stroke="#2e3440" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="400" y="187" text-anchor="middle" fill="#6b7280" font-family="monospace" font-size="12">ZONE BLOQUEE — DEBATTEMENT LATERAL NUL</text>
+
+  <!-- Ratchet Body -->
+  <rect x="260" y="274" width="230" height="36" rx="12" fill="#272c36" stroke="#6b7280" stroke-width="2"/>
+  <!-- Ergonomic Handle -->
+  <rect x="465" y="264" width="180" height="56" rx="22" fill="#1a1d24" stroke="#f59e0b" stroke-width="2.5"/>
+  <rect x="490" y="278" width="110" height="28" rx="8" fill="#f59e0b" fill-opacity="0.18"/>
+
+  <!-- Teardrop Head & Rotary Turret -->
+  <circle cx="220" cy="292" r="56" fill="#1f242d" stroke="#9ca3af" stroke-width="2.5"/>
+  <circle cx="220" cy="292" r="34" fill="#121418" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="220" cy="292" r="12" fill="#f59e0b"/>
+  <!-- Twin Crank Knobs -->
+  <circle cx="220" cy="244" r="11" fill="#e5e7eb" stroke="#121418" stroke-width="2"/>
+  <circle cx="220" cy="340" r="11" fill="#e5e7eb" stroke="#121418" stroke-width="2"/>
+
+  <!-- Tail Hex Input Arrow -->
+  <path d="M 705 292 H 655" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 667 282 L 653 292 L 667 302" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="640" y="346" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="12">ENTREE VISSEUSE 1/4"</text>
+  <text x="220" y="472" text-anchor="middle" fill="#e5e7eb" font-family="monospace" font-size="12">TOURELLE ROTATIVE + MANIVELLE</text>
+  <text x="530" y="472" text-anchor="middle" fill="#9ca3af" font-family="monospace" font-size="12">ARBRE INTERNE &amp; COUPLE CONIQUE</text>
+</svg>
